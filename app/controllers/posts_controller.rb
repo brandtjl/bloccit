@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:notice] = "Post was saved."
-      redirect_to @post
+      redirect_to @post #how does this redirect to 'show' view?
     else
       flash.new[:alert] = "There was an error saving the post. Please try again."
       render :new
