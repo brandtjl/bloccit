@@ -9,7 +9,7 @@ RSpec.describe Post, type: :model do
 # #3
   let(:topic) { Topic.create!(name: name, description: description) }
 # #4
-  let(:post) { topic.posts.create!(title: title, body: body) }
+  let(:post) { topic.posts.create!(title: title, body: body) 
 
   it { is_expected.to belong_to(:topic) }
 
