@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
      def capitalize_name
         name_array = []
-        name.split.each do |each_name|
+        name.try(:split).try(:each) do |each_name|
           name_array << each_name.capitalize
         end 
 
