@@ -37,7 +37,7 @@ posts = Post.all
     )
 end
 
-# Create an admin user
+# Create an admin user - does it always have to be assigned to a variable?
 admin = User.create!(
   name:     'Admin User',
   email:    'admin@example.com',
@@ -50,6 +50,13 @@ member = User.create!(
   name:     'Member User',
   email:    'member@example.com',
   password: 'helloworld'
+)
+
+moderator = User.create!(
+  name: 'Moderator User',
+  email: 'moderator@example.com',
+  password: 'helloworld',
+  role: 'moderator'
 )
 
 puts "Seed finished"

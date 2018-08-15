@@ -8,6 +8,7 @@
          <div class="media-body">
            <h4 class="media-heading">
  <!-- #8  how is this a link to the 'show view'? why isn't it topic_path like new_topic_path, shown below? -->
+ <!-- #topic is an object, rails link_to method knows this and assumes you want the show view, could also code as: topic_path(topic) -->
              <%= link_to topic.name, topic %> 
            </h4>
            <small>
