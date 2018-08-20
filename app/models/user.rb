@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :votes, dependent: :destroy
+   # this allows the call to post.votes to see how many votes are on a post
+   
     # #2
    before_save { self.email = email.downcase if email.present? }
    before_save { self.role ||= :member } #shorthand for self.role = :member if self.role.nil?
