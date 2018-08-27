@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    # automatically renders show view, based on show CRUD action - Rails convention!
   end
 
   def new
@@ -52,7 +53,7 @@ class PostsController < ApplicationController
   
       if @post.destroy
         flash[:notice] = "\"#{@post.title}\" was deleted successfully."
-        redirect_to @post.topic
+        redirect_to @post.topic # still not sure how @post translates to the show view?
       else
         flash.now[:alert] = "There was an error deleting the post."
         render :show

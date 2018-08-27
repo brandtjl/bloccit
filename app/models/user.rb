@@ -3,7 +3,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
    # this allows the call to post.votes to see how many votes are on a post
-   
+  has_many :favorites, dependent: :destroy
+
     # #2
    before_save { self.email = email.downcase if email.present? }
    before_save { self.role ||= :member } #shorthand for self.role = :member if self.role.nil?
@@ -22,4 +23,8 @@ class User < ApplicationRecord
    # #6
      has_secure_password
      enum role: [:member, :admin]
+
+     def favorite_for(post)
+      favorites.where(post_id: post.id).first
+     end
 end
