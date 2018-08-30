@@ -1,6 +1,7 @@
 <h1><%= @topic.name %></h1>
 <% if user_is_authorized_for_topics? %>
 <div class="col-md-4">
+<!-- #so edit_topic_path automatically knows/passes the topic_id? -->
   <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
   <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %>
 </div>
@@ -8,6 +9,7 @@
 
 <% if current_user %>
   <div class="col-md-4">
+  <!-- #why pass @topic here, but not above in edit_topic_path? -->
     <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
   </div>
 <% end %>
@@ -18,6 +20,8 @@
  <!-- #10 -->
      <% @topic.posts.each do |post| %>
        <div class="media">
+
+       <!-- #passing the variable 'post' that is NOT an instance variable? (in both the render and link_to)-->
        <%= render partial: 'votes/voting', locals: { post: post } %>
          <div class="media-body">
            <h4 class="media-heading">
